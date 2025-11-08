@@ -23,7 +23,7 @@ export const makeIntegration = (
               makeVirtualImportVitePlugin(
                 `virtual-${name.toLowerCase().replace(/\W/g, '-')}`,
                 `virtual:${name}`,
-                `export const config = ${JSON.stringify(config)}`
+                `export const config = ${JSON.stringify(config)} as const`
               ),
             ],
           },

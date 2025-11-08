@@ -1,4 +1,15 @@
 declare module 'virtual:config' {
-  import type { SiteConfig } from './lib/SiteConfig.ts';
+  interface MenuItem {
+    label: string;
+    href: string;
+  }
+
+  export interface SiteConfig {
+    siteTitle: string;
+    menus: {
+      main: MenuItem[];
+    };
+  }
+
   export const config: SiteConfig;
 }
