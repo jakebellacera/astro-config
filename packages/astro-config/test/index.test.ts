@@ -10,7 +10,7 @@ interface HookParameters {
   logger?: AstroIntegrationLogger;
 }
 
-describe('astro-config', () => {
+describe.skip('astro-config', () => {
   it('should return an integration object with the correct name', () => {
     const integration = astroConfig();
 

@@ -1,19 +1,11 @@
 {
   "name": "astro-config",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Creates an importable configuration for your Astro site or integration",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
+    ".": "./src/index.ts"
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "tsc",
     "test": "vitest run",
@@ -27,10 +19,12 @@
   "author": "Jake Bellacera",
   "license": "MIT",
   "peerDependencies": {
-    "astro": "^4.0.0"
+    "astro": "^5.0.0"
+  },
+  "dependencies": {
+    "astro": "^5.14.6"
   },
   "devDependencies": {
-    "astro": "^4.0.0",
     "typescript": "^5.3.3",
     "vitest": "^1.2.0"
   }
