@@ -9,17 +9,19 @@ export const makeVirtualImportVitePlugin = (
   importName: string,
   contents: string
 ): AstroVitePlugin => {
+  const resolvedId = `\0${importName}`;
+
   return {
     name: pluginName,
     resolveId(id: string) {
       if (id === importName) {
-        return `\0${importName}`;
+        return resolvedId;
       }
 
       return;
     },
     load(id: string) {
-      if (id === `\0${importName}`) {
+      if (id === resolvedId) {
         return contents;
       }
 
