@@ -1,77 +1,72 @@
 # astro-config
 
-Creates an importable configuration for your Astro site or integration.
+Creates an importable configuration for your [Astro](https://astro.build) site or integration.
 
-## Project Structure
+## Installation
 
-This is a pnpm workspace monorepo containing:
-
-- **packages/astro-config**: The main Astro integration package
-- **examples/basic**: A basic example Astro site using the integration
-
-## Getting Started
-
-### Installation
-
-```bash
-pnpm install
+```
+npm install astro-config
 ```
 
-### Building
+## Usage
 
-Build all packages:
+Import the integration into your Astro config:
 
-```bash
-pnpm build
+```js
+import { defineConfig } from 'astro/config';
+import astroConfig from 'astro-config';
+
+export default defineConfig({
+  integrations: [
+    astroConfig({
+      name: 'config',
+      config: {
+        // anything can go in here
+        siteTitle: 'My awesome site',
+      },
+    }),
+  ],
+});
 ```
 
-### Testing
+Then import the virtual module in your Astro files!
 
-Run tests for all packages:
+```astro
+---
+import { config } from "virtual:config";
+---
 
-```bash
-pnpm test
+<h1>Welcome to {config.siteTitle}!</h1>
 ```
 
-### Linting
+### TypeScript
 
-Run ESLint:
+If you're using TypeScript, you'll want to also declare the types for the module. You can accomplish this by creating a `virtual.d.ts` file in the root of your Astro project, then add the type declarations:
 
-```bash
-pnpm lint
+```ts
+declare module 'virtual:config' {
+  export interface SiteConfig {
+    siteTitle: string;
+  }
+
+  export const config: SiteConfig;
+}
 ```
 
-### Formatting
+## Options
 
-Format code with Prettier:
+The `astroConfig` module has two options:
 
-```bash
-pnpm format
-```
+- **name:** The name of the virtual module to import. The name will be prefixed with `virtual:*` (e.g. `config` will be `virtual:config`).
+- **config:** The object that will be exported as `config` (e.g. `{ hello: 'world' }` will export as `{ config: { hello: 'world' }}`).
 
-## Packages
+  > [!NOTE]
+  > The object's properties must be able to serialize into JSON.
 
-### astro-config
+## Contributing
 
-The main Astro integration package. See [packages/astro-config/README.md](packages/astro-config/README.md) for more details.
-
-## Examples
-
-### basic
-
-A basic example showing how to use the astro-config integration. See [examples/basic/README.md](examples/basic/README.md) for more details.
-
-## Development
-
-This project uses:
-
-- **pnpm workspaces** for monorepo management
-- **TypeScript** for type safety
-- **ESLint** for linting
-- **Prettier** for code formatting
-- **Vitest** for testing
+Contributors welcome! Please submit an issue or pull request.
 
 ## License
 
-MIT
-
+See the [LICENSE](LICENSE) for license rights and limitations (MIT).
