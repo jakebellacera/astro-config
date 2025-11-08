@@ -1,5 +1,5 @@
 import type { AstroIntegration } from 'astro';
-import { makeVirtualImportVitePlugin } from './utils/makeVirtualImportVitePlugin';
+import { makeVirtualImportVitePlugin } from './utils/makeVirtualImportVitePlugin.js';
 
 interface IntegrationOptions {
   /** Module name (will be prefixed with "virtual:") */

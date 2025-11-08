@@ -1,15 +1,27 @@
 {
   "name": "astro-config",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Creates an importable configuration for your Astro site or integration",
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "development": "./src/index.ts",
+      "default": "./dist/index.js"
+    }
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "prepublishOnly": "pnpm test && pnpm build"
   },
   "keywords": [
     "astro",
@@ -18,13 +30,20 @@
   ],
   "author": "Jake Bellacera",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jakebellacera/astro-config.git",
+    "directory": "packages/astro-config"
+  },
+  "bugs": {
+    "url": "https://github.com/jakebellacera/astro-config/issues"
+  },
+  "homepage": "https://github.com/jakebellacera/astro-config#readme",
   "peerDependencies": {
     "astro": "^5.0.0"
   },
-  "dependencies": {
-    "astro": "^5.14.6"
-  },
   "devDependencies": {
+    "astro": "^5.14.6",
     "typescript": "^5.3.3",
     "vite": "^7.2.2",
     "vitest": "^1.2.0"
