@@ -1,0 +1,57 @@
+---
+import { config } from "virtual:config";
+
+interface Props {
+  /* Page title */
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title ? `${title} | ${config.siteTitle}` : config.siteTitle}</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+      h1 {
+        color: #4f46e5;
+      }
+      .config {
+        background: #f3f4f6;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin: 1rem 0;
+      }
+      pre {
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>{config.siteTitle}</h1>
+      <nav>
+        {config.menus.main.map(item => {
+          const { label, href } = item;
+
+          return (
+            <li>
+              <a href={href}>{label}</a>
+            </li>
+          );
+        })}
+      </nav>
+    </header>
+    <slot />
+  </body>
+</html>

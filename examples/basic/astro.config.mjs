@@ -1,16 +1,23 @@
 import { defineConfig } from 'astro/config';
 import astroConfig from 'astro-config';
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [
     astroConfig({
+      name: 'config',
       config: {
-        appName: 'Basic Example',
-        version: '1.0.0',
-        features: {
-          analytics: true,
-          darkMode: true,
+        siteTitle: 'Basic Example',
+        menus: {
+          main: [
+            {
+              label: 'Home',
+              href: '/',
+            },
+            {
+              label: 'About us',
+              href: '/about',
+            },
+          ],
         },
       },
     }),
