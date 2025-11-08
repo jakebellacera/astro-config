@@ -5,6 +5,11 @@ import { createServer } from 'vite';
 
 import type { AstroVitePlugin } from './utils/makeVirtualImportVitePlugin';
 
+type ConfigSetupHook = NonNullable<
+  AstroIntegration['hooks']['astro:config:setup']
+>;
+type ConfigSetupParams = Parameters<ConfigSetupHook>[0];
+
 describe('makeIntegration()', () => {
   let integration: AstroIntegration;
 
@@ -30,8 +35,9 @@ describe('makeIntegration()', () => {
     it('should update the config with the virtual import plugin', () => {
       const updateConfig = vi.fn();
 
-      // @ts-expect-error -- todo need to fix
-      integration.hooks['astro:config:setup']?.({ updateConfig });
+      integration.hooks['astro:config:setup']?.({
+        updateConfig,
+      } as Partial<ConfigSetupParams> as ConfigSetupParams);
 
       expect(updateConfig).toHaveBeenCalledWith({
         vite: {
@@ -55,8 +61,9 @@ describe('makeIntegration()', () => {
     });
 
     it('should resolve and load the virtual import via Vite', async () => {
-      // @ts-expect-error -- todo need to fix
-      integration.hooks['astro:config:setup']?.({ updateConfig });
+      integration.hooks['astro:config:setup']?.({
+        updateConfig,
+      } as Partial<ConfigSetupParams> as ConfigSetupParams);
 
       // Verify the plugin was registered
       expect(pluginInstance).not.toBeNull();
