@@ -1,41 +1,41 @@
-import type { AstroIntegration } from 'astro';
-import { describe, it, beforeEach, expect, vi } from 'vitest';
-import { makeIntegration } from './makeIntegration';
-import { createServer } from 'vite';
+import type { AstroIntegration } from "astro";
+import { describe, it, beforeEach, expect, vi } from "vitest";
+import { createServer } from "vite";
+import { makeIntegration } from "./makeIntegration";
 
-import type { AstroVitePlugin } from './utils/makeVirtualImportVitePlugin';
+import type { AstroVitePlugin } from "./utils/makeVirtualImportVitePlugin";
 
 type ConfigSetupHook = NonNullable<
-  AstroIntegration['hooks']['astro:config:setup']
+  AstroIntegration["hooks"]["astro:config:setup"]
 >;
 type ConfigSetupParams = Parameters<ConfigSetupHook>[0];
 
-describe('makeIntegration()', () => {
+describe("makeIntegration()", () => {
   let integration: AstroIntegration;
 
   beforeEach(() => {
     integration = makeIntegration({
-      name: 'myConfig',
+      name: "myConfig",
       config: {
-        hello: 'world',
+        hello: "world",
       },
     });
   });
 
-  it('should return an Astro integration', () => {
+  it("should return an Astro integration", () => {
     expect(integration).toEqual({
-      name: 'astro-config',
+      name: "astro-config",
       hooks: {
-        'astro:config:setup': expect.any(Function),
+        "astro:config:setup": expect.any(Function),
       },
     });
   });
 
-  describe('config:setup hook', () => {
-    it('should update the config with the virtual import plugin', () => {
+  describe("config:setup hook", () => {
+    it("should update the config with the virtual import plugin", () => {
       const updateConfig = vi.fn();
 
-      integration.hooks['astro:config:setup']?.({
+      integration.hooks["astro:config:setup"]?.({
         updateConfig,
       } as Partial<ConfigSetupParams> as ConfigSetupParams);
 
@@ -47,7 +47,7 @@ describe('makeIntegration()', () => {
     });
   });
 
-  describe('virtual import (integration)', () => {
+  describe("virtual import (integration)", () => {
     type ViteConfig = { plugins: AstroVitePlugin[] };
     let pluginInstance: AstroVitePlugin | null;
     let updateConfig: (config: { vite: ViteConfig }) => void;
@@ -60,8 +60,8 @@ describe('makeIntegration()', () => {
       };
     });
 
-    it('should resolve and load the virtual import via Vite', async () => {
-      integration.hooks['astro:config:setup']?.({
+    it("should resolve and load the virtual import via Vite", async () => {
+      integration.hooks["astro:config:setup"]?.({
         updateConfig,
       } as Partial<ConfigSetupParams> as ConfigSetupParams);
 
@@ -72,18 +72,18 @@ describe('makeIntegration()', () => {
       const server = await createServer({
         configFile: false,
         plugins: [pluginInstance!],
-        logLevel: 'silent',
+        logLevel: "silent",
       });
 
       try {
         // Use Vite's module resolution to load the virtual import
-        const importName = 'virtual:myConfig';
+        const importName = "virtual:myConfig";
         const module = await server.ssrLoadModule(importName);
 
         // Verify the module has the expected export
-        expect(module).toHaveProperty('config');
+        expect(module).toHaveProperty("config");
         expect(module.config).toEqual({
-          hello: 'world',
+          hello: "world",
         });
       } finally {
         await server.close();

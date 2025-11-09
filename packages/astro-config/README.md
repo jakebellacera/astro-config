@@ -13,15 +13,15 @@ pnpm add astro-config
 Add the integration to your `astro.config.mjs`:
 
 ```javascript
-import { defineConfig } from 'astro/config';
-import astroConfig from 'astro-config';
+import { defineConfig } from "astro/config";
+import astroConfig from "astro-config";
 
 export default defineConfig({
   integrations: [
     astroConfig({
       config: {
-        apiKey: 'your-api-key',
-        apiUrl: 'https://api.example.com',
+        apiKey: "your-api-key",
+        apiUrl: "https://api.example.com",
       },
     }),
   ],

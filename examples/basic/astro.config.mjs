@@ -1,21 +1,21 @@
-import { defineConfig } from 'astro/config';
-import astroConfig from 'astro-config';
+import { defineConfig } from "astro/config";
+import astroConfig from "astro-config";
 
 export default defineConfig({
   integrations: [
     astroConfig({
-      name: 'config',
+      name: "config",
       config: {
-        siteTitle: 'Basic Example',
+        siteTitle: "Basic Example",
         menus: {
           main: [
             {
-              label: 'Home',
-              href: '/',
+              label: "Home",
+              href: "/",
             },
             {
-              label: 'About us',
-              href: '/about',
+              label: "About us",
+              href: "/about",
             },
           ],
         },
