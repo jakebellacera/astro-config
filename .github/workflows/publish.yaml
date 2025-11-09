@@ -23,4 +23,4 @@ jobs:
         run: |
           # Optional: print package version being published
           node -e "console.log('Publishing astro-config@' + require('./package.json').version)"
-          npm publish --provenance --access public
+          pnpm publish --access public
