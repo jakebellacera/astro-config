@@ -7,7 +7,9 @@
     "build": "pnpm -r run build",
     "test": "pnpm -r run test",
     "lint": "eslint .",
-    "format": "prettier --write .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier .",
+    "format:fix": "prettier --format .",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
