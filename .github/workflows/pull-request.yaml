@@ -1,0 +1,31 @@
+name: Pull request checks
+on: [pull_request]
+jobs:
+  lint:
+    name: Linting and formatting checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v4
+      - run: pnpm install
+      - run: pnpm lint
+      - run: pnpm format
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v4
+      - run: pnpm install
+      - run: pnpm test
+  build:
+    name: Build package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v4
+      - run: pnpm install
+      - run: pnpm build

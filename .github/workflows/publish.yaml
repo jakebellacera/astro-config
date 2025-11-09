@@ -1,0 +1,26 @@
+name: Publish package
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v4
+      - run: pnpm install
+      - name: Build package (astro-config)
+        run: pnpm --filter astro-config build
+      - name: Publish to npm (astro-config)
+        working-directory: packages/astro-config
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          # Optional: print package version being published
+          node -e "console.log('Publishing astro-config@' + require('./package.json').version)"
+          pnpm publish --access public
