@@ -1,7 +1,14 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./packages/astro-config" },
-    { "path": "./examples/basic" }
-  ]
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmit": false,
+    "allowImportingTsExtensions": false
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
 }
