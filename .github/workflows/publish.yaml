@@ -11,8 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
       - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
       - run: pnpm install
       - name: Build package (astro-config)
         run: pnpm --filter astro-config build
@@ -23,4 +27,4 @@ jobs:
         run: |
           # Optional: print package version being published
           node -e "console.log('Publishing astro-config@' + require('./package.json').version)"
-          pnpm publish --access public
+          pnpm publish --access public --no-git-checks
