@@ -1,5 +1,7 @@
 # astro-config
 
+[![Pull request checks](https://github.com/jakebellacera/astro-config/actions/workflows/pull-request.yaml/badge.svg)](https://github.com/jakebellacera/astro-config/actions/workflows/pull-request.yaml)
+
 Creates an importable configuration for your [Astro](https://astro.build) site or integration.
 
 ## Installation
@@ -59,9 +61,6 @@ The `astroConfig` module has two options:
 
 - **name:** The name of the virtual module to import. The name will be prefixed with `virtual:*` (e.g. `config` will be `virtual:config`).
 - **config:** The object that will be exported as `config` (e.g. `{ hello: 'world' }` will export as `{ config: { hello: 'world' }}`).
-
-  > [!NOTE]
-  > The object's properties must be able to serialize into JSON.
 
 ## Contributing
 
