@@ -18,13 +18,8 @@ jobs:
           cache: pnpm
           registry-url: https://registry.npmjs.org
       - run: pnpm install
-      - name: Build package (astro-config)
-        run: pnpm --filter astro-config build
-      - name: Publish to npm (astro-config)
-        working-directory: packages/astro-config
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: pnpm build
+      - name: Publish to npm
         run: |
-          # Optional: print package version being published
           node -e "console.log('Publishing astro-config@' + require('./package.json').version)"
           pnpm publish --access public --no-git-checks
