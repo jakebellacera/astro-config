@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-with:
+        with:
           node-version-file: ".nvmrc"
           cache: pnpm
           registry-url: https://registry.npmjs.org
@@ -27,4 +27,4 @@ with:
         run: |
           # Optional: print package version being published
           node -e "console.log('Publishing astro-config@' + require('./package.json').version)"
-          pnpm publish --access public
+          pnpm publish --access public --no-git-checks
