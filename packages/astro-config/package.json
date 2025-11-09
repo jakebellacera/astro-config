@@ -1,6 +1,6 @@
 {
   "name": "astro-config",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Creates an importable configuration for your Astro site or integration",
   "type": "module",
   "main": "./dist/index.js",
