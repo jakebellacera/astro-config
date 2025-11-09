@@ -31,9 +31,6 @@
   "peerDependencies": {
     "astro": "^5.0.0"
   },
-  "dependencies": {
-    "astro": "^5.15.4"
-  },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@typescript-eslint/eslint-plugin": "^8.46.3",
@@ -51,7 +48,7 @@
     "vitest": "^4.0.8"
   },
   "engines": {
-    "node": ">=24.11.0"
+    "node": ">=18.0.0"
   },
   "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
   "author": "Jake Bellacera",

@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       astro:
-        specifier: ^5.15.4
+        specifier: ^5.0.0
         version: 5.15.4(@types/node@24.10.0)(rollup@4.53.1)(typescript@5.9.3)
     devDependencies:
       '@eslint/js':
