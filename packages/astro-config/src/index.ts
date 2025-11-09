@@ -1,1 +1,1 @@
-export { makeIntegration as default } from './makeIntegration.js';
+export { makeIntegration as default } from "./makeIntegration.js";

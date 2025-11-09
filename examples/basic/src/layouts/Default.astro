@@ -41,11 +41,13 @@ const { title } = Astro.props;
     <header>
       <h1>{config.siteTitle}</h1>
       <nav>
-        {config.menus.main.map(item => (
-          <li>
-            <a href={item.href}>{item.label}</a>
-          </li>
-        ))}
+        {
+          config.menus.main.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
       </nav>
     </header>
     <slot />

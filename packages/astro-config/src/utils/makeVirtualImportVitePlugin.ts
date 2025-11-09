@@ -7,7 +7,7 @@ export type AstroVitePlugin = {
 export const makeVirtualImportVitePlugin = (
   pluginName: string,
   importName: string,
-  contents: string
+  contents: string,
 ): AstroVitePlugin => {
   const resolvedId = `\0${importName}`;
 

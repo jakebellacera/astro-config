@@ -1,5 +1,5 @@
-import type { AstroIntegration } from 'astro';
-import { makeVirtualImportVitePlugin } from './utils/makeVirtualImportVitePlugin.js';
+import type { AstroIntegration } from "astro";
+import { makeVirtualImportVitePlugin } from "./utils/makeVirtualImportVitePlugin.js";
 
 interface IntegrationOptions {
   /** Module name (will be prefixed with "virtual:") */
@@ -9,21 +9,21 @@ interface IntegrationOptions {
 }
 
 export const makeIntegration = (
-  options: IntegrationOptions
+  options: IntegrationOptions,
 ): AstroIntegration => {
   const { name, config } = options;
   return {
-    name: 'astro-config',
+    name: "astro-config",
     hooks: {
-      'astro:config:setup': ({ updateConfig }) => {
+      "astro:config:setup": ({ updateConfig }) => {
         // Expose theme config as a virtual import via vite plugin
         updateConfig({
           vite: {
             plugins: [
               makeVirtualImportVitePlugin(
-                `virtual-${name.toLowerCase().replace(/\W/g, '-')}`,
+                `virtual-${name.toLowerCase().replace(/\W/g, "-")}`,
                 `virtual:${name}`,
-                `export const config = ${JSON.stringify(config)};`
+                `export const config = ${JSON.stringify(config)};`,
               ),
             ],
           },

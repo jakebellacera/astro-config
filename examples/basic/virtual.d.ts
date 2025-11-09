@@ -1,4 +1,4 @@
-declare module 'virtual:config' {
+declare module "virtual:config" {
   interface MenuItem {
     label: string;
     href: string;

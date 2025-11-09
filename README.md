@@ -15,16 +15,16 @@ npm install astro-config
 Import the integration into your Astro config:
 
 ```js
-import { defineConfig } from 'astro/config';
-import astroConfig from 'astro-config';
+import { defineConfig } from "astro/config";
+import astroConfig from "astro-config";
 
 export default defineConfig({
   integrations: [
     astroConfig({
-      name: 'config',
+      name: "config",
       config: {
         // anything can go in here
-        siteTitle: 'My awesome site',
+        siteTitle: "My awesome site",
       },
     }),
   ],
@@ -46,7 +46,7 @@ import { config } from "virtual:config";
 If you're using TypeScript, you'll want to also declare the types for the module. You can accomplish this by creating a `virtual.d.ts` file in the root of your Astro project, then add the type declarations:
 
 ```ts
-declare module 'virtual:config' {
+declare module "virtual:config" {
   export interface SiteConfig {
     siteTitle: string;
   }

@@ -1,6 +1,7 @@
 {
   "name": "astro-config-workspace",
   "version": "0.0.1",
+  "type": "module",
   "private": true,
   "description": "Astro integration workspace",
   "scripts": {
@@ -8,16 +9,23 @@
     "test": "pnpm -r run test",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "format": "prettier .",
-    "format:fix": "prettier --format .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
+    "@typescript-eslint/parser": "^8.46.2",
     "eslint": "^8.56.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^1.5.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.2.5",
-    "typescript": "^5.3.3"
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.3"
   },
   "engines": {
     "node": ">=18.0.0"
